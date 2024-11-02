@@ -1,6 +1,6 @@
-using UnitOfWorkPractice.API.Models;
+using UnitOfWorkPractice.DataAccess.Models;
 
-namespace UnitOfWorkPractice.API.Repositories;
+namespace UnitOfWorkPractice.DataAccess.Repositories;
 
 public interface IUnitOfWork : IDisposable
 {

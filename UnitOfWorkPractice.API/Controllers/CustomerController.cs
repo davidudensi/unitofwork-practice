@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using UnitOfWorkPractice.API.Models;
 using UnitOfWorkPractice.API.Services;
+using UnitOfWorkPractice.DataAccess.Models;
 
 namespace UnitOfWorkPractice.API.Controllers;
 
@@ -26,5 +26,12 @@ public class CustomerController : ControllerBase
     {
         _customerService.CreateCustomer(customer);
         return Ok("Customer add successfully");
+    }
+
+    [HttpGet("{Id}", Name = "GetCustomerById")]
+    public IActionResult GetCustomer(int Id)
+    {
+        var customer = _customerService.GetCustomer(Id);
+        return Ok(customer);
     }
 }

@@ -1,8 +1,7 @@
-
 using Microsoft.EntityFrameworkCore;
-using UnitOfWorkPractice.API.Data;
+using UnitOfWorkPractice.DataAccess.Data;
 
-namespace UnitOfWorkPractice.API.Repositories;
+namespace UnitOfWorkPractice.DataAccess.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -21,6 +20,16 @@ public class Repository<T> : IRepository<T> where T : class
     public void Delete(T entity)
     {
         _dbSet.Remove(entity);
+    }
+
+    public T? Find(Func<IQueryable<T>, T> query)
+    {
+        return query(_dbSet);
+    }
+
+    public async Task<IEnumerable<int>> Find(Func<IQueryable<T>, IEnumerable<int>> query)
+    {
+        return await Task.FromResult(query(_dbSet));
     }
 
     public IEnumerable<T> GetAll()

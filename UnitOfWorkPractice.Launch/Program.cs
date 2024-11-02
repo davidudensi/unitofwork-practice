@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using UnitOfWorkPractice.API.Services;
+using UnitOfWorkPractice.DataAccess.Data;
+using UnitOfWorkPractice.DataAccess.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+ConfigureServices(builder.Services);
 
 // Add services to the container.
 
@@ -23,3 +29,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
+
+        services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+}

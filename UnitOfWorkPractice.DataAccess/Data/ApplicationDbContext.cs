@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using UnitOfWorkPractice.API.Models;
+using UnitOfWorkPractice.DataAccess.Models;
 
-namespace UnitOfWorkPractice.API.Data;
+namespace UnitOfWorkPractice.DataAccess.Data;
 
 public class ApplicationDbContext : DbContext
 {

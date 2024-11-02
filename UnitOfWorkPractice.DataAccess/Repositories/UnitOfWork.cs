@@ -1,7 +1,7 @@
-using UnitOfWorkPractice.API.Data;
-using UnitOfWorkPractice.API.Models;
+using UnitOfWorkPractice.DataAccess.Data;
+using UnitOfWorkPractice.DataAccess.Models;
 
-namespace UnitOfWorkPractice.API.Repositories;
+namespace UnitOfWorkPractice.DataAccess.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
